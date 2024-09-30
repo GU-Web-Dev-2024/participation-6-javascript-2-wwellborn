@@ -48,7 +48,9 @@
         </div>
 
         <div>
+            <label for="message"></label>
             <p id="message"></p>
+            
         </div>
         <hr>
     </div>
@@ -62,8 +64,37 @@
         // uses the document object and selects the element with a matching Id found in the DOM.
         // adds an event listener (for a click) of that selected element.
         // executes the code in the body of the anonymous function
-        document.getElementById('guess-button').addEventListener('click', function () {
+        let guessesLeft=3;
+        let button = document.getElementById('guess-button');
+        let answer = Math.floor(Math.random(1,10));
+        button.addEventListener('click', function () {//guess here
             //function body -- any code here will be executed when the registered event is triggered.
+            let guess = document.getElementById('guess-input').value;
+            //alert(guess.value)
+            if(guessesLeft > 0)
+            {   
+            guessesLeft--;
+            if(guess = answer)
+                {
+                    document.getElementById('message').value = "You Win!";
+                }
+            else if(guess = null)
+            {
+                document.getElementById('message').value = "No Input!";
+            }
+            else if(guess < answer)
+            {
+                document.getElementById('message').value = "Too Low!";
+            }
+            else 
+            {
+                document.getElementById('message').value = "Too high!";
+            }
+            }
+            else
+            {
+                document.getElementById('message').value = "Out of Guesses!";
+            }
         });
 
     </script>
